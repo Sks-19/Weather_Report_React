@@ -16,10 +16,13 @@ function Weather() {
         if(event.key == 'Enter') {
             axios.get(url).then((response) => {
                 setData(response.data)
+                console.log(data.timezone)
+                
             })
             setLocation('')
         }
     }
+
 
     return (
           <div class="container-fluid px-1  mx-auto">
@@ -34,11 +37,10 @@ function Weather() {
                         {data.main ? <h1 id="temprature" class="large-font mr-3 text-danger">{data.main.temp.toFixed()}*C</h1> : null}
                         <div class="d-flex flex-column mr-3">
                             <h2 class="mt-3 mb-0 text-white">{data.name}</h2>
-                            <small>10:36 - Tuesday, 22 Oct '19</small>
                         </div>
-                        <div class="d-flex flex-column text-center font-weight-bold">
-                            {data.weather ? <h1 className="text-white">{data.weather[0].description}</h1> : null}
-                        </div>
+                        <div className="description">
+                         {data.weather ? <p className="bold">{data.weather[0].main}</p> : null}
+                       </div>
                     </div>
                 </div>
                 <div class="card2 col-lg-4 col-md-5">
@@ -53,29 +55,30 @@ function Weather() {
                        {data.name != undefined &&
                         <div className="bottom">
                         <h1>Weather Details</h1>
-                        <div class="row px-1">
-                            <p class="font-weight-bold col-sm-5">Cloudy</p>
+                        <p></p>
+
+                        <div class="input-group">
+                            <p class="font-weight-bold col-sm-5 pe-5">Cloudy</p>
                             {data.clouds ? <p className="ml-auto col-sm-5">{data.clouds.all}</p>: null}
                         </div>
-                        <div class="row px-1">
-                            <p class="font-weight-bold col-sm-5">Feels Like</p>
+                        <div class="input-group">
+                            <p class="font-weight-bold col-sm-5 pe-5">Feels Like</p>
                             {data.main ? <p className="ml-auto col-sm-5">{data.main.feels_like} *F</p> : null}
                         </div>
-                        <div class="row px-1">
-                            <p class="font-weight-bold col-sm-5">Pressure</p>
+                        <div class="input-group">
+                            <p class="font-weight-bold col-sm-5 pe-5">Pressure</p>
                             {data.main ? <p className="ml-auto col-sm-5">{data.main.pressure}</p> : null}
                         </div>
-                        <div class="row px-1">
-                            <p class="font-weight-bold col-sm-5">Humidity</p>
+                        <div class="input-group">
+                            <p class="font-weight-bold col-sm-5 pe-5">Humidity</p>
                             {data.main ? <p className="ml-auto col-sm-5">{data.main.humidity} %</p> : null}
                         </div>
-                        <div class="row px-1">
-                            <p class="font-weight-bold col-sm-5">Wind Speed</p>
+                        <div class="input-group">
+                            <p class="font-weight-bold col-sm-5 pe-5">Wind Speed</p>
                             {data.wind ? <p className="ml-auto col-sm-5">{data.wind.speed.toFixed()} Km/h</p> : null }
                         </div>
                         </div>                       
                        }
-                       
 
                         <div class="line mt-3"></div>
                     </div>
