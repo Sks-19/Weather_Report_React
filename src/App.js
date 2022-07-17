@@ -5,9 +5,8 @@ import Weather from "./weather";
 function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
-
-  //const apiKey = `26ccca7e0eb67957d35e1d9d974d493b`;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=26ccca7e0eb67957d35e1d9d974d493b`;
+  
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=##`;
   
   const searchLocation = (event) => {
     if(event.key == 'Enter') {
